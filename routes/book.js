@@ -10,7 +10,7 @@ async function getBooks(req, res) {
   try {
     const books = await Book.find({});
     return res.json(books);
-    books;
+    
   } catch (error) {
     console.log(error);
   }
