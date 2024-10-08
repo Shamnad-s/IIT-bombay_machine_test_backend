@@ -8,7 +8,7 @@ const roles = ["Librarian", "Member"];
 const bcrypt = require("bcryptjs");
 async function signupUser(req, res) {
   const { username, password, role } = req.body;
-  console.log(req.body);
+
 
   if (!username || !password || !role) {
     let resp = {
@@ -35,7 +35,7 @@ async function signupUser(req, res) {
     const hashedPassword = await bcrypt.hash(password, 10);
     user = new User({ username, password: hashedPassword, role });
     await user.save();
-    const payload = { _id: user._id, role: user.role };
+    const payload = { _id: user._id, role: user.role,username:user.username };
     const token = jwt.sign(payload, "secre_key", { expiresIn: "1h" });
     res.status(201).json({ token, username });
   } catch (error) {
@@ -66,11 +66,11 @@ async function loginUser(req, res) {
     const isSamePassword = await bcrypt.compare(password, user.password);
     if (!isSamePassword) {
       let resp = {
-        message: "Invalid credentials",
+        message: "Invalid credentials",  
       };
       return res.status(400).json(resp);
     }
-    const payload = { _id: user._id, role: user.role };
+    const payload = { _id: user._id, role: user.role,username:user.username };
     const token = jwt.sign(payload, "secre_key", { expiresIn: "1h" });
     res.json({ token });
   } catch (error) {

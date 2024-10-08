@@ -21,6 +21,9 @@ const UserSchema = new mongoose.Schema(
         book: { type: mongoose.Schema.Types.ObjectId, ref: "Book" },
         boorowedAt: { type: Date, default: Date.now },
         returnedAt: { type: Date },
+        title: { type: String },
+        username: { type: String },
+        borrowedBy: { type: mongoose.Schema.Types.ObjectId, ref: "Member" },
       },
     ],
     isactive: {
@@ -31,4 +34,4 @@ const UserSchema = new mongoose.Schema(
   { timestamps: true }
 );
 
-module.exports = mongoose.model("User",UserSchema);
+module.exports = mongoose.model("User", UserSchema);

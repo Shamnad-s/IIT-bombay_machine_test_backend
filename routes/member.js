@@ -5,6 +5,7 @@ const jwt = require("jsonwebtoken");
 const dotenv = require("dotenv");
 const roles = ["Librarian", "Member"];
 const bcrypt = require("bcryptjs");
+const authentication = require("../middleware/auth");
 async function getAllMembers(req, res) {
   try {
     const allMembers = await User.find({ role: "Member" }).select("-password");
@@ -44,7 +45,6 @@ async function addMembers(req, res) {
 async function deleteMembers(req, res) {
   try {
     let user = await User.findById(req.params.id);
-    console.log(user);
 
     if (!user || user.role !== "Member") {
       res.status(404).json({ message: "Users not found" });
@@ -61,8 +61,6 @@ async function deleteMembers(req, res) {
 async function updateAmember(req, res) {
   const { username, password, isactive } = req.body;
   try {
-    console.log(req.params.id, "req.params.idreq.params.idreq.params.id");
-
     let user = await User.findById(req.params.id);
     if (!user) {
       return res.status(404).json({ meassage: "user not found" });
@@ -85,8 +83,61 @@ async function updateAmember(req, res) {
     console.log(error);
   }
 }
-router.post("/add-new-mebers", addMembers);
+async function viewHistory(req, res) {
+  try {
+    let user = await User.findById(req.body.user_id).populate("borrowedbooks");
+
+    if (!user) {
+      return res.status(404).json({ meassage: "user not found" });
+    }
+
+    res.json({ user: user });
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+async function deleteAccount(req, res) {
+  try {
+    const user_id = req.body.user_id;
+
+    let user = await User.findById(user_id);
+
+    if (!user) {
+      return res.status(404).json({ meassage: "user not found" });
+    }
+    user.isactive = false;
+    await user.save();
+    res.json({ message: "user deleted successfully" });
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+async function fetchHistory(req, res) {
+  try {
+    let history = [];
+    const allHistory = await User.find({}).populate("borrowedbooks");
+    if (!allHistory) {
+      return res.status(404).json({ meassage: "history not found" });
+    }
+    for (let i = 0; i < allHistory.length; i++) {
+      const element = allHistory[i].borrowedbooks;
+      if (element && element.length) {
+        history.push(element);
+      }
+    }
+    res.json(history.flat());
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({ message: "server error" });
+  }
+}
+router.post("/add-new-mebers", authentication("Librarian"), addMembers);
 router.get("/get-all-mebers", getAllMembers);
-router.delete("/delete/:id", deleteMembers);
-router.put("/update/:id", updateAmember);
+router.delete("/delete/:id", authentication("Librarian"), deleteMembers);
+router.put("/update/:id", authentication("Librarian"), updateAmember);
+router.post("/history", authentication("Member"), viewHistory);
+router.post("/delete/account", authentication("Member"), deleteAccount);
+router.get("/hsitory", fetchHistory);
 module.exports = router;
