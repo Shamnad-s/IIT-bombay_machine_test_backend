@@ -57,7 +57,7 @@ async function loginUser(req, res) {
 
     if (!user || !user.isactive) {
       let resp = {
-        message: "Invalid credentials",
+        message: "This user is not exist",
       };
       return res.status(400).json(resp);
     }
