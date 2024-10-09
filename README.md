@@ -54,5 +54,5 @@ Hosting Instructions:
 [Hosting Instructions](https://docs.google.com/document/d/1YJ4hkFKiqdLr0OexlIsMXmJcqXNOHcD1eFtc9YZ19x4/edit?tab=t.0)
 
 Database Diagram:
-https://drive.google.com/drive/u/0/home
+[https://drive.google.com/drive/u/0/home](https://drive.google.com/file/d/16kXvxsMxrvPN2_I0zoJ9sro8EBFzpWPS/view)
 
