@@ -33,3 +33,5 @@ PORT=your_port_number
 Start the Server: 
 npm run dev
 
+Your application should now be running at http://localhost:3000
+
