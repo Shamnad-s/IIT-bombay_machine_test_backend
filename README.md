@@ -39,6 +39,7 @@ Your application should now be running at http://localhost:3000
 
 📑 Additional Information
 Table Structure:
+
 (https://docs.google.com/document/d/1P3OQZcfPNZDZDgGf6bDeeReR_WdhaM-HJi-wByvM2TU/edit?tab=t.0
 
 Frontend Flow:
