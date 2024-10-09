@@ -19,9 +19,7 @@ app.use("/api/auth", authRoutes);
 app.use("/api/books", bookRoutes);
 app.use("/api/members", memberRoutes);
 mongoose
-  .connect(
-    "mongodb+srv://Amien:12345@cluster0.gului2c.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0"
-  )
+  .connect(process.env.MONGO_URL)
   .then(() => {
     console.log("successfully connected to db.");
   })
@@ -29,6 +27,6 @@ mongoose
     console.log(err, "failed to connect");
   });
 
-server.listen(3000, () => {
+server.listen(process.env.PORT, () => {
   console.log("port connected to 3000.");
 });

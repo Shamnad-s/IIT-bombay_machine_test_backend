@@ -16,7 +16,7 @@ const authentication = (roles = []) => {
       if (!token) {
         return res.status(401).json({ message: "access denied" });
       }
-      const decoded = jwt.verify(token, "secre_key");
+      const decoded = jwt.verify(token, process.env.JWT_SECRET);
 
       const user = await User.findById(decoded._id);
       if (!user) {
