@@ -40,6 +40,7 @@ async function addMembers(req, res) {
   } catch (error) {
     console.log(error);
     res.status(500).json({ message: "server error" });
+    return;
   }
 }
 async function deleteMembers(req, res) {
