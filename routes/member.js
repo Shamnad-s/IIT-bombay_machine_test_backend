@@ -26,7 +26,7 @@ async function addMembers(req, res) {
     }
     let user = await User.findOne({ username });
     if (user) {
-      res.status(400).json({ message: "Users already exist" });
+      return res.status(400).json({ message: "Users already exist" });
     }
     const hashedPassword = await bcrypt.hash(password, 10);
     user = new User({ username, password: hashedPassword, role: "Member" });
