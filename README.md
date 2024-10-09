@@ -37,3 +37,23 @@ npm run dev
 
 Your application should now be running at http://localhost:3000
 
+📑 Additional Information
+Table Structure:
+Table Structure Documentation
+
+Frontend Flow:
+Frontend Flow Documentation
+
+API Documentation:
+API Documentation
+
+Code Design:
+Code Design Documentation
+
+Hosting Instructions:
+Hosting Instructions
+
+Database Diagram:
+Database Diagram
+
+
