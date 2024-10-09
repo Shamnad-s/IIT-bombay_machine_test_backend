@@ -39,21 +39,20 @@ Your application should now be running at http://localhost:3000
 
 📑 Additional Information
 Table Structure:
-Table Structure Documentation
+(https://docs.google.com/document/d/1P3OQZcfPNZDZDgGf6bDeeReR_WdhaM-HJi-wByvM2TU/edit?tab=t.0
 
 Frontend Flow:
-Frontend Flow Documentation
+[Frontend Flow Documentation](https://docs.google.com/document/d/1q_AnHhgePT8qJC_9ATIle9m7wDNaZ-ez-7TbkebQYqQ/edit?tab=t.0)
 
 API Documentation:
-API Documentation
+[API Documentation](https://docs.google.com/document/d/126vz62HFGHvNfNhOWGKPQgjbrOdEoc0mro0qWyH2fdw/edit?tab=t.0)
 
 Code Design:
-Code Design Documentation
+[Code Design Documentation](https://docs.google.com/document/d/1HhXvCWfZ3yfadX1x8o2ej7v1cb6vyDCNSFzSHMHI3_M/edit?tab=t.0)
 
 Hosting Instructions:
-Hosting Instructions
+[Hosting Instructions](https://docs.google.com/document/d/1YJ4hkFKiqdLr0OexlIsMXmJcqXNOHcD1eFtc9YZ19x4/edit?tab=t.0)
 
 Database Diagram:
-Database Diagram
-
+https://drive.google.com/drive/u/0/home
 
