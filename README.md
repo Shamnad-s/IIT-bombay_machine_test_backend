@@ -24,6 +24,7 @@ Authorization Middleware:
 🔧 Setup Instructions
 
 Clone the Repository:git clone https://github.com/Shamnad-s/IIT-bombay_machine_test_backend.git
+
 Install Dependencies:npm install
 Configure Environment Variables:
 Create a .env file with the following variables: 
