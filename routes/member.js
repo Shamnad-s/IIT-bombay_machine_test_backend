@@ -12,7 +12,7 @@ async function getAllMembers(req, res) {
     res.json(allMembers);
   } catch (error) {
     console.log(error);
-    res.status(500).json({ message: "server error" });
+    return res.status(500).json({ message: "server error" });
   }
 }
 
@@ -20,7 +20,7 @@ async function addMembers(req, res) {
   try {
     const { username, password } = req.body;
     if (!username || !password) {
-      res
+      return res
         .status(400)
         .json({ message: "please provide username and password." });
     }
@@ -48,7 +48,7 @@ async function deleteMembers(req, res) {
     let user = await User.findById(req.params.id);
 
     if (!user || user.role !== "Member") {
-      res.status(404).json({ message: "Users not found" });
+      return res.status(404).json({ message: "Users not found" });
     }
     user.isactive = false;
 
@@ -82,6 +82,7 @@ async function updateAmember(req, res) {
     res.json({ meassage: "user updated successfully" });
   } catch (error) {
     console.log(error);
+    return
   }
 }
 async function viewHistory(req, res) {
@@ -95,6 +96,7 @@ async function viewHistory(req, res) {
     res.json({ user: user });
   } catch (error) {
     console.log(error);
+    return
   }
 }
 
@@ -112,6 +114,7 @@ async function deleteAccount(req, res) {
     res.json({ message: "user deleted successfully" });
   } catch (error) {
     console.log(error);
+    return
   }
 }
 
@@ -131,7 +134,7 @@ async function fetchHistory(req, res) {
     res.json(history.flat());
   } catch (error) {
     console.log(error);
-    res.status(500).json({ message: "server error" });
+    return res.status(500).json({ message: "server error" });
   }
 }
 router.post("/add-new-mebers", authentication("Librarian"), addMembers);

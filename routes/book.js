@@ -13,6 +13,7 @@ async function getBooks(req, res) {
     
   } catch (error) {
     console.log(error);
+    return
   }
 }
 async function generateBooks(req, res) {
@@ -30,6 +31,7 @@ async function generateBooks(req, res) {
     }
   } catch (error) {
     console.log(error);
+    return
   }
 }
 async function deleteBooks(req, res) {
@@ -41,6 +43,7 @@ async function deleteBooks(req, res) {
     res.json({ meassage: "Book Deleted successfully" });
   } catch (error) {
     console.log(error);
+    return
   }
 }
 async function updateBooks(req, res) {
@@ -64,6 +67,7 @@ async function updateBooks(req, res) {
     res.json({ meassage: "Book Updated successfully" });
   } catch (error) {
     console.log(error);
+    return
   }
 }
 async function borrowOrReturnBooks(req, res) {
@@ -119,6 +123,7 @@ async function borrowOrReturnBooks(req, res) {
     res.json({ meassage: "Book Updated successfully" });
   } catch (error) {
     console.log(error);
+    return
   }
 }
 router.get("/getbooks", getBooks);

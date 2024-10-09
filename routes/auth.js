@@ -39,7 +39,7 @@ async function signupUser(req, res) {
   } catch (error) {
     console.log(error);
 
-    res.status(500).json({ message: "server error" });
+    return res.status(500).json({ message: "server error" });
   }
 }
 async function loginUser(req, res) {
@@ -74,7 +74,7 @@ async function loginUser(req, res) {
   } catch (error) {
     console.log(error);
 
-    res.status(500).json({ message: "server error" });
+    return res.status(500).json({ message: "server error" });
   }
 }
 router.post("/signup", signupUser);
